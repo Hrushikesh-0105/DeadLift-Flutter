@@ -1,0 +1,28 @@
+Expanded(
+                    child: TextField(
+                      controller: searchInput,
+                      style: style3().copyWith(fontSize: 18),
+                      cursorColor: lightgreen,
+                      cursorHeight: 20,
+                      onChanged: (value) {
+                        rebuildAfterTypingStops();
+                      },
+                      onTap: () {
+                        _turnOffSlidingCustomerWindow();
+                        setState(() {
+                          turnOffMultiSelect();
+                        });
+                      },
+                      decoration: searchTextFieldStyle().copyWith(
+                          suffix: IconButton(
+                        onPressed: () {
+                          searchInput.clear();
+                          dbController.searchText.value = "";
+                          FocusScope.of(context).unfocus();
+                          setState(() {});
+                        },
+                        icon: const Icon(Icons.close_rounded),
+                        color: Colors.grey[800],
+                      )),
+                    ),
+                  ),
